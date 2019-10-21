@@ -1,0 +1,31 @@
+* {
+  margin: 0;
+  padding: 0;
+  font: 14px '微软雅黑';
+}
+ul {
+  list-style: none;
+}
+.header {
+  width: 1100px;
+  height: 80px;
+  display: flex;
+  justify-content: space-between;
+}
+.header .headerNav {
+  height: 80px;
+}
+* {
+  margin: 0;
+  padding: 0;
+}
+.scrollWrap {
+  position: relative;
+}
+.scrollWrap .bannerWrap {
+  position: absolute;
+  display: flex;
+}
+.scrollWrap .bannerWrap div {
+  width: 100%;
+}
