@@ -91,5 +91,25 @@ img {
 }
 
 /* 头部区域结束 */
+/* 内容区布局开始 */
+#content {
+  background: gray;
+}
+#content .list li {
+  position: relative;
+}
+#content .list li div {
+  width: 1100px;
+  height: 520px;
+  background: pink;
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  margin: auto;
+}
+
+/* 内容区布局结束 */
 
 /*# sourceMappingURL=index.css.map */
