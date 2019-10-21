@@ -1,0 +1,42 @@
+@charset "UTF-8";
+/* 基本样式设置开始 */
+html, body {
+  height: 100%;
+  overflow: hidden;
+}
+
+html, body, h1, h2, h3, h4, h5, h6, p, ul, li {
+  margin: 0px;
+  padding: 0px;
+  font: 14px "微软雅黑";
+}
+
+a {
+  text-decoration: none;
+  display: block;
+}
+
+li {
+  list-style: none;
+}
+
+img {
+  display: block;
+  /* 基本样式设置完成 */
+}
+
+/* common css 开始 */
+.clearfix {
+  *zoom: 1;
+}
+.clearfix::after {
+  content: "";
+  display: block;
+  clear: both;
+}
+
+/* common css 结束 */
+/* 头部区域开始 */
+/* 头部区域结束 */
+
+/*# sourceMappingURL=index.css.map */

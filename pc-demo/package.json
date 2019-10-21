@@ -4,7 +4,8 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "sasswk": "sass ./src/css/index.sass ./lib/css/index.css",
+    "postcsswk": "postcss ./lib/css/index.css -o ./dist/css/index.min.css"
   },
   "keywords": [],
   "author": "",
