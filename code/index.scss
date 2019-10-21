@@ -1,39 +1,83 @@
-*{
+html,body{
+  height: 100%;
+  overflow: hidden;
+}
+html,body,h1,h2,h3,h4,h5,h6,p,ul,li{
   margin: 0;
   padding: 0;
-  font: 14px '微软雅黑';
+  font: 14px "微软雅黑";
 }
-
-ul{
+a{
+  text-decoration: none;
+  display: block;
+}
+li{
   list-style: none;
 }
-.locCenter(){
-  left: 0;
-  right: 0;
+img{
+  display: block;
 }
+
 .header{
+  margin: 0 auto;
   width: 1100px;
   height: 80px;
   display: flex;
   justify-content: space-between;
-  .logo{}
-  .headerNav{
-    display: flex;
-    justify-content: space-around;
+  .logoWrap{
     height: 80px;
+    display: flex;
+    .logo{
+        margin-top: 30px;
+    }
+    .music{
+        margin-top: 47px;
+    }
+  }
+  .navWrap {
+    position: relative;
+    .headerNav {
+      margin-top: 50px;
+      display: flex;
+      justify-content: space-around;
+      //height: 80px;
+      li {
+        margin-left: 40px;
+        .house {
+          width: 18px;
+          height: 16px;
+          background: url("../img/home.png") no-repeat 0 0;
+          background-size: contain;
+
+          &.active {
+            background: url("../img/home_gruen.png") no-repeat 0 0;
+            background-size: contain;
+
+          }
+        }
+
+        div {
+          height: 100%;
+          width: 0;
+
+          &.active {
+            width: 100%;
+            color: #000;
+          }
+        }
+      }
+    }
+    .arrow {
+      position: absolute;
+
+    }
   }
 }
-*{
-  margin:0;
-  padding:0
-}
-.scrollWrap{
+.main{
   position: relative;
-  .bannerWrap{
+  .bannerArea{
+    width: 100%;
+    height: 100%;
     position: absolute;
-    display: flex;
-    div{
-      width: 100%;
-    }
   }
 }
