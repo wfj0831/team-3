@@ -220,22 +220,32 @@ function (module, __webpack_exports__, __webpack_require__) {
     //获取元素
     var arrow = document.querySelector('#head .headMain>.arrow');
     var liNodes = document.querySelectorAll('#head .headMain>nav>.list>li');
-    var firstLiNode = liNodes[0]; //初始化小尖角的位置
+    var firstLiNode = liNodes[0];
+    var upNodes = document.querySelectorAll('#head .headMain nav .list li .up');
+    var firstupNode = upNodes[0];
+    var head = document.querySelector('#head');
+    var content = document.querySelector('#content');
+    var cliNodes = document.querySelectorAll('#content .list > li');
+    var cList = document.querySelector("#content .list"); //初始化小尖角的位置  
 
     arrow.style.left = firstLiNode.offsetLeft + firstLiNode.offsetWidth / 2 - arrow.offsetWidth / 2 + 'px'; //移动小尖角的位置
 
     var _loop = function _loop(i) {
       liNodes[i].addEventListener('click', function () {
         arrow.style.left = liNodes[i].offsetLeft + liNodes[i].offsetWidth / 2 - arrow.offsetWidth / 2 + 'px';
+
+        for (var _i2 = 0; _i2 < upNodes.length; _i2++) {
+          upNode[_i2].style.width = "";
+        }
+
+        upNode[i].style.width = "100%";
       });
     };
 
     for (var i = 0; i < liNodes.length; i++) {
       _loop(i);
-    }
+    } //内容区 因为与头部有交互 放一块
 
-    var content = document.querySelector('#content');
-    var cliNodes = document.querySelectorAll('#content .list > li');
 
     function contentBind() {
       content.style.height = document.documentElement.clientHeight - head.offsetHeight + 'px';

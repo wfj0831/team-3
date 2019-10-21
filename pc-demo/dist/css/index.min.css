@@ -87,21 +87,49 @@ img {
   background: url("../../src/img/menuIndicator.png");
   position: absolute;
   bottom: -11px;
+  left: 50%;
   transition: left 0.8s;
+  z-index: 10;
 }
 
 /* 头部区域结束 */
 /* 内容区布局开始 */
 #content {
   background: gray;
+  position: relative;
+  overflow: hidden;
+  width: 100%;
+}
+#content .list {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100%;
+  transition: 1s top;
 }
 #content .list li {
   position: relative;
+  background-position: 50% 50% !important;
+}
+#content .list li.home {
+  background: url("../../src/img/bg1.jpg") no-repeat;
+}
+#content .list li.course {
+  background: url("../../src/img/bg2.jpg") no-repeat;
+}
+#content .list li.works {
+  background: url("../../src/img/bg3.jpg") no-repeat;
+}
+#content .list li.about {
+  background: url("../../src/img/bg4.jpg") no-repeat;
+}
+#content .list li.team {
+  background: url("../../src/img/bg5.jpg") no-repeat;
 }
 #content .list li div {
   width: 1100px;
   height: 520px;
-  background: pink;
+  background-color: pink;
   position: absolute;
   left: 0;
   right: 0;
