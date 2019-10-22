@@ -69,66 +69,176 @@
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__header__ = __webpack_require__(1);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__content__ = __webpack_require__(2);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__frame_frame__ = __webpack_require__(1);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__business_home__ = __webpack_require__(3);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__business_home___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1__business_home__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__business_course__ = __webpack_require__(4);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__business_course___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_2__business_course__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__business_works__ = __webpack_require__(5);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__business_works___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_3__business_works__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__business_about__ = __webpack_require__(6);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__business_about___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_4__business_about__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__business_team__ = __webpack_require__(7);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__business_team___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_5__business_team__);
 
 
 
-window.onload = () => {
-  Object(__WEBPACK_IMPORTED_MODULE_0__header__["a" /* default */])()
-  Object(__WEBPACK_IMPORTED_MODULE_1__content__["a" /* default */])()
-}
+
+
+
+
 
 /***/ }),
 /* 1 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony default export */ __webpack_exports__["a"] = (() => {
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__move_move__ = __webpack_require__(2);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__wheel_wheel__ = __webpack_require__(8);
+
+
+
+window.onload = () => {
   //获取元素
   const arrow = document.querySelector('#head .headMain>.arrow')
   const liNodes = document.querySelectorAll('#head .headMain>nav>.list>li')
   const firstLiNode = liNodes[0]
   const upNodes = document.querySelectorAll('#head .headMain nav .list li .down')
   const firstupNode = upNodes[0]
-  const head = document.querySelector('#head')
   const content = document.querySelector('#content')
-  const cliNodes = document.querySelectorAll('#content .list > li')
-  const cList = document.querySelector("#content .list")
+  const cLiNodes = document.querySelectorAll('#content .list > li')
+  const pointNodes = document.querySelectorAll('#content .points li')
   //初始化小尖角的位置和第一个nav的颜色  
   arrow.style.left = firstLiNode.offsetLeft + firstLiNode.offsetWidth / 2 - arrow.offsetWidth / 2 + 'px'
   firstupNode.style.width = '100%'
-  //移动小尖角的位置
-  for (var i = 0; i < liNodes.length; i++) {
-    liNodes[i].index = i
-    liNodes[i].addEventListener('click',function (){
-      for (let j = 0; j < upNodes.length; j++) {
-        upNodes[j].style.width = ""
+  //移动小尖角的位置  点击nav切换颜色 小圆点切换 
+  if(liNodes.length === pointNodes.length){
+    for (var i = 0; i < liNodes.length; i++) {
+      liNodes[i].index = i
+      pointNodes[i].index = i
+      liNodes[i].onclick = pointNodes[i].onclick = function (){
+        Object(__WEBPACK_IMPORTED_MODULE_0__move_move__["a" /* default */])(this.index)
       }
-      upNodes[this.index].style.width = "100%"
-      arrow.style.left = this.offsetLeft + this.offsetWidth / 2 - arrow.offsetWidth / 2 + 'px'
-    })
-  }
-  //内容区 因为与头部有交互 放一块
-  
-  
-  function contentBind(){
-    content.style.height = document.documentElement.clientHeight - head.offsetHeight + 'px'
-    for (let i = 0; i < cliNodes.length; i++) {
-      cliNodes[i].style.height = document.documentElement.clientHeight - head.offsetHeight + 'px'
     }
   }
-  contentBind();
-});
+  
+  //内容去逻辑
+  cLiNodes.forEach(liNode => liNode.style.height = content.offsetHeight + 'px')
+
+
+  //滚轮事件
+  content.index = 0
+  let timer = 0
+  if(content.addEventListener){
+    content.addEventListener('DOMMouseScroll',event => {
+         clearTimeout(timer)
+         timer = setTimeout(() => Object(__WEBPACK_IMPORTED_MODULE_1__wheel_wheel__["a" /* default */])(event,content.index),30)
+    })
+  }
+  content.onmousewheel = event => {
+    clearTimeout(timer)
+    timer = setTimeout(() => Object(__WEBPACK_IMPORTED_MODULE_1__wheel_wheel__["a" /* default */])(event,content.index),30)
+  }
+}
 
 /***/ }),
 /* 2 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony default export */ __webpack_exports__["a"] = (() => {
-  //获取元素
+/* harmony default export */ __webpack_exports__["a"] = (index => {
+  const upNodes = document.querySelectorAll('#head .headMain nav .list li .down')
+  const arrow = document.querySelector('#head .headMain>.arrow')
+  const liNodes = document.querySelectorAll('#head .headMain>nav>.list>li')
+  const pointNodes = document.querySelectorAll('#content .points li')
+  const content = document.querySelector('#content')
+  const cList = document.querySelector('#content .list')
+  //切换按钮样式 和 小圆点样式
+  for (let j = 0; j < upNodes.length; j++) {
+    upNodes[j].style.width = ""
+    pointNodes[j].classList.remove('active')
+  }
+  upNodes[index].style.width = "100%"
+  pointNodes[index].classList.add('active')
+  //同步小箭头
+  arrow.style.left = liNodes[index].offsetLeft + liNodes[index].offsetWidth / 2 - arrow.offsetWidth / 2 + 'px'
+
+  //竖向滑动
+  cList.style.top = - index * content.offsetHeight + 'px';
  
+});
+
+/***/ }),
+/* 3 */
+/***/ (function(module, exports) {
+
+
+
+/***/ }),
+/* 4 */
+/***/ (function(module, exports) {
+
+
+
+/***/ }),
+/* 5 */
+/***/ (function(module, exports) {
+
+
+
+/***/ }),
+/* 6 */
+/***/ (function(module, exports) {
+
+
+
+/***/ }),
+/* 7 */
+/***/ (function(module, exports) {
+
+
+
+/***/ }),
+/* 8 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__move_move__ = __webpack_require__(2);
+
+
+/* harmony default export */ __webpack_exports__["a"] = ((e,index) => {
+  e = e || event
+  const pointNodes = document.querySelectorAll('#content .points li')
+  let length = pointNodes.length
+  const content = document.querySelector('#content')
+  let direction = ''
+
+  if(e.wheelDelta && e.wheelDelta > 0){
+    direction = 'up'
+  }else if(e.wheelDelta && e.wheelDelta < 0){
+    direction = 'down'
+  }
+
+  if(e.detail && e.detail > 0){
+    direction = 'down'
+  }else if(e.detail && e.detail < 0){
+    direction = 'up'
+  }
+
+
+  switch(direction){
+    case 'up':
+      index > 0 ? index-- : 0
+      Object(__WEBPACK_IMPORTED_MODULE_0__move_move__["a" /* default */])(index) 
+      break
+    case 'down':
+      console.log(direction)
+      index < (length - 1) ? index++ : (length - 1)
+      Object(__WEBPACK_IMPORTED_MODULE_0__move_move__["a" /* default */])(index)
+      break
+  }
+  content.index = index
+  console.log(index)
 });
 
 /***/ })

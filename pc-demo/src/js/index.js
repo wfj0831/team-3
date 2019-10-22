@@ -1,7 +1,6 @@
-import head from './header'
-import content from './content'
-
-window.onload = () => {
-  head()
-  content()
-}
+import "./frame/frame"
+import "./business/home"
+import "./business/course"
+import "./business/works"
+import "./business/about"
+import "./business/team"

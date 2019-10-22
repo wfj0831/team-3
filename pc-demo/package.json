@@ -9,7 +9,7 @@
     "webpackwk": "webpack ./src/js/index.js  ./lib/js/index.js",
     "babelwk": "babel ./lib/js/index.js -o ./dist/js/index.js",
     
-    "dosassDev": "sass --watch ./src/css/index.scss  ./lib/css/index.css",
+    "dosassDev": "sass --watch ./src/css/index.sass  ./lib/css/index.css",
     "dowebpackDev": "webpack --watch ./src/js/index.js  ./lib/js/index.js"
   },
   "keywords": [],
