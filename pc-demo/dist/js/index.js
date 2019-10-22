@@ -235,10 +235,10 @@ function (module, __webpack_exports__, __webpack_require__) {
         arrow.style.left = liNodes[i].offsetLeft + liNodes[i].offsetWidth / 2 - arrow.offsetWidth / 2 + 'px';
 
         for (var _i2 = 0; _i2 < upNodes.length; _i2++) {
-          upNode[_i2].style.width = "";
+          upNodes[_i2].style.width = "";
         }
 
-        upNode[i].style.width = "100%";
+        upNodes[i].style.width = "100%";
       });
     };
 

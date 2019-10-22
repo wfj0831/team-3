@@ -89,23 +89,24 @@ window.onload = () => {
   const arrow = document.querySelector('#head .headMain>.arrow')
   const liNodes = document.querySelectorAll('#head .headMain>nav>.list>li')
   const firstLiNode = liNodes[0]
-  const upNodes = document.querySelectorAll('#head .headMain nav .list li .up')
+  const upNodes = document.querySelectorAll('#head .headMain nav .list li .down')
   const firstupNode = upNodes[0]
-
   const head = document.querySelector('#head')
   const content = document.querySelector('#content')
   const cliNodes = document.querySelectorAll('#content .list > li')
   const cList = document.querySelector("#content .list")
-  //初始化小尖角的位置  
+  //初始化小尖角的位置和第一个nav的颜色  
   arrow.style.left = firstLiNode.offsetLeft + firstLiNode.offsetWidth / 2 - arrow.offsetWidth / 2 + 'px'
+  firstupNode.style.width = '100%'
   //移动小尖角的位置
-  for (let i = 0; i < liNodes.length; i++) {
+  for (var i = 0; i < liNodes.length; i++) {
+    liNodes[i].index = i
     liNodes[i].addEventListener('click',function (){
-      arrow.style.left = liNodes[i].offsetLeft + liNodes[i].offsetWidth / 2 - arrow.offsetWidth / 2 + 'px'
-      for (let i = 0; i < upNodes.length; i++) {
-        upNode[i].style.width = ""
+      for (let j = 0; j < upNodes.length; j++) {
+        upNodes[j].style.width = ""
       }
-      upNode[i].style.width = "100%"
+      upNodes[this.index].style.width = "100%"
+      arrow.style.left = this.offsetLeft + this.offsetWidth / 2 - arrow.offsetWidth / 2 + 'px'
     })
   }
   //内容区 因为与头部有交互 放一块
